@@ -2,6 +2,8 @@ package tevalis
 
 import (
 	"context"
+	"encoding/json"
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -200,10 +202,16 @@ func (c *Client) GetSalesExport(ctx context.Context, version string, siteID int,
 		return nil, &APIError{StatusCode: response.StatusCode, Body: payload}
 	}
 
-	return &models.SalesExportResponse{
-		StatusCode:  response.StatusCode,
-		ContentType: response.Header.Get("Content-Type"),
-		Headers:     response.Header.Clone(),
-		Body:        payload,
-	}, nil
+	var salesResp models.SalesExportResponse
+	if c.contentType == "application/xml" {
+		if err := xml.Unmarshal(payload, &salesResp); err != nil {
+			return nil, err
+		}
+	} else {
+		if err := json.Unmarshal(payload, &salesResp); err != nil {
+			return nil, err
+		}
+	}
+
+	return &salesResp, nil
 }
