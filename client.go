@@ -169,7 +169,7 @@ func (c *Client) newRequest(ctx context.Context, method, path string, query url.
 }
 
 // GetSalesExport calls GET /{version}/Sales/GetSalesExport.
-func (c *Client) GetSalesExport(ctx context.Context, version string, siteID int, startDate, endDate time.Time) (*models.SalesExportResponse, error) {
+func (c *Client) GetSalesExport(ctx context.Context, version string, siteID int, startDate, endDate time.Time) (*models.SalesExportModel, error) {
 	if c == nil {
 		return nil, fmt.Errorf("client cannot be nil")
 	}
@@ -202,7 +202,7 @@ func (c *Client) GetSalesExport(ctx context.Context, version string, siteID int,
 		return nil, &APIError{StatusCode: response.StatusCode, Body: payload}
 	}
 
-	var salesResp models.SalesExportResponse
+	var salesResp models.SalesExportModel
 	if c.contentType == "application/xml" {
 		if err := xml.Unmarshal(payload, &salesResp); err != nil {
 			return nil, err

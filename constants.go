@@ -2,9 +2,7 @@ package tevalis
 
 const (
 	TEVALISAPIHost     = "api.tevalis.com"
-	DefaultContentType = "application/xml"
-	JSONContentType    = "application/json"
-	XMLContentType     = "application/xml"
+	DefaultContentType = "application/json"
 	HeaderCompanyID    = "CompanyId"
 	HeaderGUID         = "GUID"
 	HeaderDeveloperID  = "DevID"
