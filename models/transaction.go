@@ -3,7 +3,7 @@ package models
 // BillHeaderAndFooterModel is a detailed model of a sales transaction.
 type BillHeaderAndFooterModel struct {
 	EPOSTransactionID              int            `json:"EPOSTransactionID" xml:"EPOSTransactionID"`
-	SaleDate                       FlexibleTime   `json:"SaleDate" xml:"SaleDate"`
+	SaleDate                       FlexibleTime   `json:"SaleDate" xml:"SaleDate"` // The date is already adjusted to the site time zone.
 	WeekNo                         int            `json:"WeekNo" xml:"WeekNo"`
 	CoverCount                     int            `json:"CoverCount" xml:"CoverCount"`
 	TableNumber                    int            `json:"TableNumber" xml:"TableNumber"`
@@ -16,8 +16,8 @@ type BillHeaderAndFooterModel struct {
 	ServiceChargeAmt               float64        `json:"ServiceChargeAmt" xml:"ServiceChargeAmt"`
 	GratuityAmt                    float64        `json:"GratuityAmt" xml:"GratuityAmt"`
 	TotalDiscountAmount            float64        `json:"TotalDiscountAmount" xml:"TotalDiscountAmount"`
-	OpenDateTime                   FlexibleTime   `json:"OpenDateTime" xml:"OpenDateTime"`
-	ClosedDateTime                 FlexibleTime   `json:"ClosedDateTime" xml:"ClosedDateTime"`
+	OpenDateTime                   FlexibleTime   `json:"OpenDateTime" xml:"OpenDateTime"`     // The date is already adjusted to the site time zone.
+	ClosedDateTime                 FlexibleTime   `json:"ClosedDateTime" xml:"ClosedDateTime"` // The date is already adjusted to the site time zone.
 	EmployeeOpenedBillID           int            `json:"EmployeeOpenedBillID" xml:"EmployeeOpenedBillID"`
 	EmployeeOpenedBill             string         `json:"EmployeeOpenedBill" xml:"EmployeeOpenedBill"`
 	EmployeeClosedBillID           int            `json:"EmployeeClosedBillID" xml:"EmployeeClosedBillID"`
@@ -26,7 +26,7 @@ type BillHeaderAndFooterModel struct {
 	BillTransferred                bool           `json:"BillTransferred" xml:"BillTransferred"`
 	EmployeeWhoTransferredBillID   int            `json:"EmployeeWhoTransferredBillID" xml:"EmployeeWhoTransferredBillID"`
 	EmployeeWhoTransferredBillName string         `json:"EmployeeWhoTransferredBillName" xml:"EmployeeWhoTransferredBillName"`
-	TransferDateTime               FlexibleTime   `json:"TransferDateTime" xml:"TransferDateTime"`
+	TransferDateTime               FlexibleTime   `json:"TransferDateTime" xml:"TransferDateTime"` // The date is already adjusted to the site time zone.
 	CRMMemberID                    int            `json:"CRMMemberID" xml:"CRMMemberID"`
 	IsRefund                       bool           `json:"IsRefund" xml:"IsRefund"`
 	Terminal                       string         `json:"Terminal" xml:"Terminal"`
@@ -63,12 +63,12 @@ type BillItemInfo struct {
 	SessionName           string          `json:"SessionName" xml:"SessionName"`
 	EmployeeWhoSoldID     int             `json:"EmployeeWhoSoldID" xml:"EmployeeWhoSoldID"`
 	EmployeeWhoSoldName   string          `json:"EmployeeWhoSoldName" xml:"EmployeeWhoSoldName"`
-	EnterDateTime         FlexibleTime    `json:"EnterDateTime" xml:"EnterDateTime"`
+	EnterDateTime         FlexibleTime    `json:"EnterDateTime" xml:"EnterDateTime"` // The date is already adjusted to the site time zone.
 	IsVoided              bool            `json:"IsVoided" xml:"IsVoided"`
 	VoidReason            *string         `json:"VoidReason" xml:"VoidReason"`
 	EmployeeWhoVoidedID   int             `json:"EmployeeWhoVoidedID" xml:"EmployeeWhoVoidedID"`
 	EmployeeWhoVoidedName string          `json:"EmployeeWhoVoidedName" xml:"EmployeeWhoVoidedName"`
-	VoidDateTime          FlexibleTime    `json:"VoidDateTime" xml:"VoidDateTime"`
+	VoidDateTime          FlexibleTime    `json:"VoidDateTime" xml:"VoidDateTime"` // The date is already adjusted to the site time zone.
 	IsErrorCorrect        bool            `json:"IsErrorCorrect" xml:"IsErrorCorrect"`
 	IsOption              bool            `json:"IsOption" xml:"IsOption"`
 	IsSold                bool            `json:"IsSold" xml:"IsSold"`
@@ -83,7 +83,7 @@ type DiscountInfo struct {
 	DiscountReasonDesc         string       `json:"DiscountReasonDesc" xml:"DiscountReasonDesc"`
 	DiscountAmt                float64      `json:"DiscountAmt" xml:"DiscountAmt"`
 	DiscountApprovedByEmployee bool         `json:"DiscountApprovedByEmployee" xml:"DiscountApprovedByEmployee"`
-	DiscountApprovalDateTime   FlexibleTime `json:"DiscountApprovalDateTime" xml:"DiscountApprovalDateTime"`
+	DiscountApprovalDateTime   FlexibleTime `json:"DiscountApprovalDateTime" xml:"DiscountApprovalDateTime"` // The date is already adjusted to the site time zone.
 }
 
 type PromotionInfo struct {
@@ -100,7 +100,7 @@ type PaymentInfo struct {
 	TenderTypeName      string       `json:"TenderTypeName" xml:"TenderTypeName"`
 	EmployeeID          int          `json:"EmployeeID" xml:"EmployeeID"`
 	EmployeeName        string       `json:"EmployeeName" xml:"EmployeeName"`
-	TenderedDateTime    FlexibleTime `json:"TenderedDateTime" xml:"TenderedDateTime"`
+	TenderedDateTime    FlexibleTime `json:"TenderedDateTime" xml:"TenderedDateTime"` // The date is already adjusted to the site time zone.
 	TableNo             int          `json:"TableNo" xml:"TableNo"`
 	TenderID            int          `json:"TenderID" xml:"TenderID"`
 	ThirdPartyReference string       `json:"ThirdPartyReference" xml:"ThirdPartyReference"`
