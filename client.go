@@ -17,7 +17,7 @@ import (
 )
 
 const DefaultBaseURL = "https://api.tevalis.com"
-const DefaultDateFormat = "2006-01-02"
+const DefaultDateFormat = time.RFC3339
 
 // Client is the Tevalis API client.
 type Client struct {
